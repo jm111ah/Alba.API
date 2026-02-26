@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using AlbaAPI.Service.Dto;
-using AlbaAPI.Service.Services;
+using AlbaAPI.Service.Interfaces;
 using AlbaAPI.Repository;
 
 namespace AlbaAPI.App.Controllers

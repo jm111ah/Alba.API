@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using AlbaAPI.Service.Dto;
 
-namespace AlbaAPI.Service.Services
+namespace AlbaAPI.Service.Interfaces
 {
     // Service 계약: Controller는 이 인터페이스로만 Service를 사용 (구현은 SampleService).
 

@@ -34,7 +34,7 @@
   <ItemGroup>
     <Compile Include="Entities\EntityBase.cs" />
     <Compile Include="Entities\SampleEntity.cs" />
-    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="SampleRepository.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

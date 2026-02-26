@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AlbaAPI.Repository.Entities;
-using AlbaAPI.Repository.Repositories;
+using AlbaAPI.Repository.Interfaces;
 
 namespace AlbaAPI.Repository
 {

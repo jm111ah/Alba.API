@@ -39,7 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\SampleDto.cs" />
-    <Compile Include="Services\ISampleService.cs" />
+    <Compile Include="Interfaces\ISampleService.cs" />
     <Compile Include="Services\SampleService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

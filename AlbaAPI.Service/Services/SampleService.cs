@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using AlbaAPI.Repository.Entities;
-using AlbaAPI.Repository.Repositories;
+using AlbaAPI.Repository.Interfaces;
 using AlbaAPI.Service.Dto;
+using AlbaAPI.Service.Interfaces;
 
 namespace AlbaAPI.Service.Services
 {

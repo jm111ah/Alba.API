@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using AlbaAPI.Repository.Entities;
 
-namespace AlbaAPI.Repository.Repositories
+namespace AlbaAPI.Repository.Interfaces
 {
-    // ========== Repository 계층: 데이터 접근 계약 ==========
-    // Entity 단위로 저장/조회하는 인터페이스. 구현은 같은 프로젝트의 SampleRepository 등.
+    // Repository 계층: 데이터 접근 계약. Entity 단위 저장/조회. 구현은 SampleRepository 등.
 
     /// <summary>
     /// 리포지토리 기본 인터페이스

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace AlbaAPI.Service.Dto
 {
     // ========== Dto 역할: Controller ↔ Service 간 데이터 전달 ==========
@@ -10,6 +12,9 @@ namespace AlbaAPI.Service.Dto
     public class SampleDto
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "이름은 필수입니다.")]
+        [StringLength(100, ErrorMessage = "이름은 100자 이하여야 합니다.")]
         public string Name { get; set; }
     }
 }

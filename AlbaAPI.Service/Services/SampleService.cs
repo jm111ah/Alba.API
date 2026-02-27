@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using AlbaAPI.Common.Logging;
 using AlbaAPI.Repository.Entities;
 using AlbaAPI.Repository.Interfaces;
 using AlbaAPI.Service.Dto;
@@ -18,10 +21,12 @@ namespace AlbaAPI.Service.Services
     public class SampleService : ISampleService
     {
         private readonly IRepository<SampleEntity> _repository;
+        private readonly ILogger _logger;
 
-        public SampleService(IRepository<SampleEntity> repository)
+        public SampleService(IRepository<SampleEntity> repository, ILogger logger)
         {
             _repository = repository;
+            _logger = logger;
         }
 
         public SampleDto GetById(int id)
@@ -33,6 +38,48 @@ namespace AlbaAPI.Service.Services
         public IEnumerable<SampleDto> GetAll()
         {
             return _repository.GetAll().Select(ToDto);
+        }
+
+        // 비동기 메서드 구현
+        public async Task<SampleDto> GetByIdAsync(int id)
+        {
+            try
+            {
+                _logger.Debug($"GetByIdAsync 호출: id={id}");
+                var entity = await _repository.GetByIdAsync(id);
+                
+                if (entity == null)
+                {
+                    _logger.Warning($"GetByIdAsync: id={id}에 해당하는 엔티티를 찾을 수 없습니다.");
+                    return null;
+                }
+
+                _logger.Info($"GetByIdAsync 성공: id={id}, name={entity.Name}");
+                return ToDto(entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"GetByIdAsync 오류: id={id}", ex);
+                throw;
+            }
+        }
+
+        public async Task<IEnumerable<SampleDto>> GetAllAsync()
+        {
+            try
+            {
+                _logger.Debug("GetAllAsync 호출");
+                var entities = await _repository.GetAllAsync();
+                var result = entities.Select(ToDto).ToList();
+                
+                _logger.Info($"GetAllAsync 성공: {result.Count}개 항목 반환");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error("GetAllAsync 오류", ex);
+                throw;
+            }
         }
 
         private static SampleDto ToDto(SampleEntity entity)

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AlbaAPI.Service.Dto;
 
 namespace AlbaAPI.Service.Interfaces
@@ -12,5 +13,9 @@ namespace AlbaAPI.Service.Interfaces
     {
         SampleDto GetById(int id);
         IEnumerable<SampleDto> GetAll();
+
+        // 비동기 메서드
+        Task<SampleDto> GetByIdAsync(int id);
+        Task<IEnumerable<SampleDto>> GetAllAsync();
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5A6B7C8-5D6E-4F7A-0B1C-2D3E4F5A6B7C}</ProjectGuid>
+    <ProjectGuid>{A1B2C3D4-5E6F-4A7B-8C9D-0E1F2A3B4C5D}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AlbaAPI.Repository</RootNamespace>
-    <AssemblyName>AlbaAPI.Repository</AssemblyName>
+    <RootNamespace>AlbaAPI.Common</RootNamespace>
+    <AssemblyName>AlbaAPI.Common</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -30,18 +30,29 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>$(SolutionDir)packages\Microsoft.AspNet.WebApi.Core.5.2.9\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlbaAPI.Common\AlbaAPI.Common.csproj">
-      <Project>{a1b2c3d4-5e6f-4a7b-8c9d-0e1f2a3b4c5d}</Project>
-      <Name>AlbaAPI.Common</Name>
-    </ProjectReference>
+    <Compile Include="Configuration\AppSettings.cs" />
+    <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Filters\ExceptionFilterAttribute.cs" />
+    <Compile Include="Filters\ValidateModelAttribute.cs" />
+    <Compile Include="Logging\LogLevel.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\FileLogger.cs" />
+    <Compile Include="Models\ApiResponse.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\EntityBase.cs" />
-    <Compile Include="Entities\SampleEntity.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Repositories\SampleRepository.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
+

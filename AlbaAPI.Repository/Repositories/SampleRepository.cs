@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using AlbaAPI.Repository.Entities;
 using AlbaAPI.Repository.Interfaces;
 
-namespace AlbaAPI.Repository
+namespace AlbaAPI.Repository.Repositories
 {
     // ========== Repository 계층: Entity 단위로 저장소 접근 ==========
     // IRepository 구현. 실제로는 DB/파일/외부 API 등과 연동.
@@ -46,5 +47,36 @@ namespace AlbaAPI.Repository
         {
             _store.RemoveAll(e => e.Id == entity.Id);
         }
+
+        // 비동기 메서드 구현
+        public Task<SampleEntity> GetByIdAsync(int id)
+        {
+            return Task.FromResult(_store.FirstOrDefault(e => e.Id == id));
+        }
+
+        public Task<IEnumerable<SampleEntity>> GetAllAsync()
+        {
+            return Task.FromResult<IEnumerable<SampleEntity>>(_store);
+        }
+
+        public Task AddAsync(SampleEntity entity)
+        {
+            _store.Add(entity);
+            return Task.CompletedTask;
+        }
+
+        public Task UpdateAsync(SampleEntity entity)
+        {
+            var existing = _store.FirstOrDefault(e => e.Id == entity.Id);
+            if (existing != null) existing.Name = entity.Name;
+            return Task.CompletedTask;
+        }
+
+        public Task RemoveAsync(SampleEntity entity)
+        {
+            _store.RemoveAll(e => e.Id == entity.Id);
+            return Task.CompletedTask;
+        }
     }
 }
+

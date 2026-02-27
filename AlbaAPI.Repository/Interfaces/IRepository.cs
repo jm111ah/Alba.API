@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AlbaAPI.Repository.Entities;
 
 namespace AlbaAPI.Repository.Interfaces
@@ -15,5 +16,12 @@ namespace AlbaAPI.Repository.Interfaces
         void Add(T entity);
         void Update(T entity);
         void Remove(T entity);
+
+        // 비동기 메서드
+        Task<T> GetByIdAsync(int id);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task AddAsync(T entity);
+        Task UpdateAsync(T entity);
+        Task RemoveAsync(T entity);
     }
 }

@@ -28,6 +28,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AlbaAPI.Common\AlbaAPI.Common.csproj">
+      <Project>{a1b2c3d4-5e6f-4a7b-8c9d-0e1f2a3b4c5d}</Project>
+      <Name>AlbaAPI.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AlbaAPI.Repository\AlbaAPI.Repository.csproj">
       <Project>{f5a6b7c8-5d6e-4f7a-0b1c-2d3e4f5a6b7c}</Project>
       <Name>AlbaAPI.Repository</Name>
@@ -35,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
